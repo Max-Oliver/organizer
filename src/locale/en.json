@@ -1,0 +1,222 @@
+{
+    "VALIDATIONS": {
+        "required": "required field"
+    },
+
+    "GENERAL": {
+        "save":            "save",
+        "cancel":          "cancel",
+        "new":             "new",
+        "create":          "create",
+        "delete":          "delete",
+        "close":           "close",
+        "exit": "exit",
+        "next":            "next",
+        "prev":            "prev",
+        "change":          "cambiar",
+        "warning":         "warning",
+        "warningResponse": "I know what I'm doing",
+        "noUndo":          "This action can not be undone",
+        "noInfo":          "No information was found",
+        "video":           "Video",
+        "shareCall":       "Share Screen",
+        "conference":      "Conference",
+        "savedData":       "Settings saved succesfully",
+        "errorFields":     "The fields can't be empty",
+        "errorWrongFile":  "Wrong file type"
+    },
+
+    "TOOLBAR" : {
+        "appearance":            "Appearance",
+        "selectAppearance":      "Select the appearance of the portal",
+        "lightMode":             "Light Mode",
+        "darkMode":              "Dark Mode",
+        "connectivity":          "Connectivity",
+        "verifyConnectivity":    "Verify Connectivity",
+        "verifyConnectivitySTUN":"Verify STUN Connectivity",
+        "profile":               "Profile",
+        "changePassword":        "Change Password",
+        "lock":                  "Lock Screen",
+        "block":                 "Block",
+        "closeSession":          "Close Session",
+        "actualPassword":        "Actual password",
+        "newPassword":           "New password",
+        "repitPassword":          "Repit the new password",
+
+        "editPicture":           "Edit Profile Image",
+        "statisticalData":       "Statistical Data",
+        "sessionTime":           "Session Time",
+        "spokenTime":            "Speaking Time",
+        "breackTime":            "Time Breack",
+        "freeTime":              "Free Time",
+        "interactions":          "Interactions",
+        "webchat":               "Webchat",
+        "confirmExit":           "Are you sure you want to leave ?",
+        "layout":                "Design",
+        "newWebchat":            "New Webchat",
+        "messageFrom":           "Message",
+        "lastNotifications":     "Last Notifications",
+        "passwordChanged":       "Password changed correctly",
+        "passwordNotEquals":     "Passwords do not match",
+        "sessionClosed":         "The session has been closed"
+    },
+
+    "USERS": {
+        "search":          "What user are you looking for?",
+        "name":            "name",
+        "type":            "type",
+        "security":        "security",
+        "phone":           "phone",
+        "basics":          "Basics",
+        "advancedOptions": "Advanced Options",
+        "context":         "context",
+        "email":           "email",
+        "userName":        "user name",
+        "password":        "password",
+        "voicemail":       "voicemail",
+        "language":        "language",
+        "codecs":          "codecs",
+        "activeUser":      "active user",
+        "deleteUsers":     "Are you sure you want to delete the selected users?",
+        "deleted":         "user successfully deleted"
+    },
+
+
+    "PROVIDERS": {
+        "search":          "What provider are you looking for?",
+        "name":            "name",
+        "context":         "context",
+        "connection":      "Connection",
+        "hostDirection":   "host direction",
+        "proxy":           "proxy",
+        "password":        "password",
+        "port":            "port",
+        "transport":       "transport",
+        "basicData":       "Basic Data",
+        "fullName":        "full name",
+        "deleteProviders": "Are you sure you want to delete the selected providers?",
+        "deleted":         "provider successfully deleted"
+    },
+
+    "CAMPAIGNS": {
+        "search":            "What campaign are you looking for?",
+        "basics":            "Basics data",
+        "webchat":           "Webchat",
+        "name":              "Name",
+        "email":             "E-Mail",
+        "phone":             "Phone",
+        "form":              "Form",
+        "strategy":          "Strategy",
+        "threshold":         "Threshold",
+        "writeMessage":      "Write your message..",
+        "welcome":           "Welcome",
+        "contactInfo":       "We usually aim for a response time of just a few minutes during office hours, after hours please fill your information and we'll follow up!"
+    },
+
+    "LEFTSIDEMENU": {
+        "home":            "home",
+        "find":            "What are you looking for?",
+        "configuration":   "configuration",
+        "users":           "users",
+        "securityGroups":  "security groups",
+        "providers":       "providers",
+        "campaigns":       "campaigns",
+        "dialers":         "dialers",
+        "holidays":        "holidays",
+        "blackList":       "black list",
+        "sounds":          "sounds",
+        "gamification":    "gamification",
+        "tasks":           "tasks",
+        "settings":        "settings",
+        "wizard":          "wizard",
+        "realTime":        "real time",
+        "dashboards":      "dashboards",
+        "calls":           "calls",
+        "recordings":      "recordings",
+        "analitics" :      "analitics",
+        "reports":         "reports",
+        "surveys":         "surveys",
+        "dashboard":       "dashboard",
+        "development":     "development",
+        "workflowDesigner":"workflow designer",
+        "forms":           "formularios",
+        "filters":         "filtros",
+        "crm" :            "crm"
+    },
+
+    "RIGHTSIDEMENU" : {
+        "systemUsers":     "System Users"
+    },
+
+    "SETTINGUP": {
+        "welcome":         "Welcome!",
+        "postWelcome":     "Before you start using uPhone, let's set a few things up!",
+        "telephony":       "Telephony Server",
+        "phone":           "Phone Number",
+        "password":        "Password",
+        "language":        "Language",
+        "setUp":           "You're all set up!",
+        "start":           "Start!"
+    },
+
+    "CONTACTS": {
+        "contacts":        "CONTACTS",
+        "contactsName":    "Contact's Name",
+        "contactsNumber":  "Contact's Number",
+        "add":             "Add",
+        "close":           "Cancel",
+        "chatPlaceholder": "Write your message"
+    },
+
+    "HISTORICAL": {
+        "historical":      "HISTORY",
+        "noHistory":       "No call history found"
+    },
+
+    "SETTINGS": {
+        "telephony":       "Telephony Server",
+        "domain":          "Domain",
+        "proxy":           "Proxy Server",
+        "stun":            "Stun Server",
+        "phone":           "Phone Number",
+        "password":        "Password",
+        "language":        "Language",
+        "light":           "Light Mode",
+        "dark":            "Dark Mode",
+        "save":            "Save"
+    },
+
+    "PHONE": {
+        "toDial":          "DIAL A NUMBER",
+        "clickToAnswer":   "Click here to answer",
+        "clickToSee":      "Click here to see",
+        "incomingCall":    "Incoming call from ",
+        "incomingVideo":   "Incoming videocall from ",
+        "incomingMessage": "Incoming message from ",
+        "video-phone":     "Video",
+        "mute-phone":      "Mute",
+        "blind-phone":     "Blind Trans.",
+        "hold-phone":      "Hold",
+        "keypad-phone":    "Keypad",
+        "attended-phone":  "Att. Trans.",
+        "registered":      "REGISTERED",
+        "connected":       "CONNECTED",
+        "disconnected":    "DISCONNECTED",
+        "unregistered":    "UNREGISTERED",
+        "registrationFailed": "REGISTRATION FAILED",
+        "starting":        "STARTING",
+        "peerconnection":  "PEERCONNECTION",
+        "hold":            "HOLD",
+        "unhold":          "UNHOLD",
+        "mute":            "MUTE",
+        "unmute":          "UNMUTE",
+        "sending":         "SENDING",
+        "accepted":        "ACCEPTED",
+        "connecting":      "CONNECTING",
+        "ringing":         "RINGING",
+        "confirmed":       "CONFIRMED",
+        "failed":          "FAILED - ",
+        "ended":           "ENDED - "
+
+    }
+}

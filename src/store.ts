@@ -1,0 +1,55 @@
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  state: {
+    drawer: {
+      left: false,
+      right: false
+    },
+    settings: {},
+    userInfo: { name: 'DamianRz' },
+    phone: {
+      status: 'UNREGISTERED',
+    },
+    theme: {
+      dark: false,
+      colors: { nav: '#fff', navIcons: '#676767', menu: '#fff', menuIcons: '#676767' },
+    },
+    showLockScreen: false,
+  },
+  mutations: {
+    setSettings(state, settings) {
+      state.settings = settings;
+    },
+
+    setUserInfo(state, info) {
+        state.userInfo = info;
+    },
+
+    setTheme(state, dark) {
+      state.theme.dark = dark;
+    },
+
+    setColors(state, colors) {
+      state.theme.colors.nav = colors.nav;
+      state.theme.colors.menu = colors.menu;
+      state.theme.colors.menuIcons = colors.menuIcons;
+      state.theme.colors.navIcons = colors.navIcons;
+    },
+
+    setLeftDrawer(state,drawer) {
+      state.drawer.left = drawer;
+    },
+
+    setRightDrawer(state,drawer) {
+      state.drawer.right = drawer;
+    }
+  },
+
+  actions: {
+
+  }
+});

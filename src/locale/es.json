@@ -1,0 +1,223 @@
+{
+    "VALIDATIONS": {
+        "required": "campo requerido"
+    },
+
+    "GENERAL": {
+        "save":              "guardar",
+        "cancel":            "cancelar",
+        "new":               "nuevo",
+        "create":            "crear",
+        "delete":            "borrar",
+        "close":             "cerrar",
+        "exit": "salir",
+        "next":              "siguiente",
+        "prev":              "atras",
+        "change":            "cambiar",
+        "warning":           "atencion",
+        "warningResponse":   "se lo que estoy haciendo",
+        "noUndo":            "Esta accion no se puede deshacer",
+        "noInfo":            "No se encontro informacion...",
+        "video":             "Video",
+        "shareCall":         "Comp. Pantalla",
+        "conference":        "Conferencia",
+        "savedData":         "Datos guardados con exito",
+        "errorFields":       "Debe completar los datos para continuar",
+        "errorWrongFile":    "Formato de archivo incorrecto"
+    },
+
+
+    "TOOLBAR": {
+        "appearance":          "Apariencia",
+        "selectAppearance":    "Seleccione la apariencia del portal",
+        "lightMode":           "Modo Light",
+        "darkMode":            "Modo Dark",
+        "connectivity":        "Conectividad",
+        "verifyConnectivity":  "Verificar Conectividad",
+        "verifyConnectivitySTUN":"Verificar Conectividad STUN",
+        "profile":             "Perfil",
+        "changePassword":      "Cambiar Contraseña",
+        "lock":                "Bloquear",
+        "closeSession":        "Cerrar Sesion",
+        "actualPassword":      "Contraseña Actual",
+        "newPassword":         "Nueva Contraseña",
+        "repitPassword":       "Repita la nueva contraseña",
+
+
+        "editPicture":         "Editar Imagen de Perfil",
+        "statisticalData":     "datos estadisticos",
+        "sessionTime":         "Tiempo de Sesion",
+        "spokenTime":          "Tiempo Hablado",
+        "breackTime":          "Tiempo de Breack",
+        "freeTime":            "Tiempo Libre",
+        "interactions":        "Interacciones",
+        "webchat":             "Webchat",
+        "confirmExit":         "Esta seguro que desea salir?",
+        "layout":              "Diseño",
+        "newWebchat":          "Nuevo Webchat",
+        "messageFrom":         "Mensaje de ",
+        "lastNotifications":   "Ultimas Notificaciones",
+        "passwordChanged":     "Contraseña cambiada correctamente",
+        "passwordNotEquals":   "Las Contraseñas no coinciden",
+        "sessionClosed":       "La sesion a sido cerrada"
+    },
+
+
+    "USERS": {
+        "search"          : "Que usuario esta buscando?",
+        "name"            : "nombre",
+        "type"            : "tipo",
+        "security"        : "Seguridad",
+        "phone"           : "telefono",
+        "basics"          : "Basicos",
+        "advancedOptions" : "Opciones Avanzadas",
+        "context"         : "contexto",
+        "email"           : "email",
+        "userName"        : "nombre de usuario",
+        "password"        : "cotraseña",
+        "voicemail"       : "voicemail",
+        "language"        : "idioma",
+        "codecs"          : "codecs",
+        "activeUser"      : "usuario activo",
+        "deleteUsers"     : "¿Esta seguro que desea eliminar los usuarios seleccionados?",
+        "deleted"         : "usuario eliminado correctamente"
+    },
+
+    "PROVIDERS": {
+        "search":            "Que proveedor esta buscando?",
+        "basics":            "Basicos",
+        "name":              "nombre",
+        "context":           "contexto",
+        "connection":        "Conexion",
+        "hostDirection":     "direccion host",
+        "proxy":             "proxy",
+        "password":          "contraseña",
+        "port":              "puerto",
+        "transport":         "transporte",
+        "basicData":         "Datos Basicos",
+        "fullName":          "nombre completo",
+        "deleteProviders":   "Are you sure you want to delete the selected providers?",
+        "deleted":           "provider successfully deleted"
+    },
+
+    "CAMPAIGNS": {
+        "search":            "Que campañas esta buscando?",
+        "basics":            "Datos basicos",
+        "webchat":           "Webchat",
+        "name":              "Nombre",
+        "email":             "Correo",
+        "phone":             "Telefono",
+        "form":              "Formulario",
+        "strategy":          "Estrategia",
+        "threshold":         "Limite",
+        "writeMessage":      "Escriba su mensaje..",
+        "welcome":           "Bienvenido",
+        "contactInfo":       "Usualmente apuntamos a un tiempo de respuesta de solo unos minutos; concluido nuestro horario de oficina dejanos tus datos y nos comunicaremos!"
+    },
+
+
+
+    "LEFTSIDEMENU": {
+        "home":                 "inicio",
+        "find":                 "Que es lo que esta buscando?",
+        "configuration" :       "configuracion",
+            "users":            "usuarios",
+            "securityGroups":   "grupos de seguridad",
+            "providers":        "proveedores",
+            "campaigns":        "campañas",
+            "dialers":          "marcadores",
+            "holidays":         "vacaciones",
+            "blackList":        "lista negra",
+            "sounds":           "sonidos",
+            "gamification":     "gamification",
+            "tasks":            "tareas",
+            "settings":         "ajustes",
+            "wizard":           "asistente",
+        "realTime":             "tiempo real",
+            "dashboards":       "tableros",
+            "calls":            "llamadas",
+            "recordings":       "gravaciones",
+        "analitics" :           "analitica",
+            "reports":          "reportes",
+            "surveys":          "encuestas",
+            "dashboard":        "tablero",
+        "development":          "desarrollo",
+            "workflowDesigner": "diseñador de flujos",
+            "forms":            "formularios",
+            "filters":          "filtros",
+
+            "crm":              "crm"
+    },
+
+    "RIGHTSIDEMENU" : {
+        "systemUsers":          "Usuarios del sistema"
+    },
+
+    "SETTINGUP": {
+        "welcome":     "Bienvenido!",
+        "postWelcome": "Antes de comenzar a usar uPhone, Configuremos unas cosas!",
+        "telephony":   "Servidor de Telefonía",
+        "phone":       "Número de Telefono",
+        "password":    "Cotraseña",
+        "language":    "Lenguaje",
+        "setUp":       "Esta todo pronto!",
+        "start":       "Comenzar!"
+    },
+    "CONTACTS": {
+        "contacts":        "CONTACTOS",
+        "contactsName":    "Nombre del Contacto",
+        "contactsNumber":  "Número del Contacto",
+        "add":             "Ingresar",
+        "close":           "Cancelar",
+        "chatPlaceholder": "Escriba su mensaje"
+    },
+    "HISTORICAL": {
+        "historical": "HISTORIAL",
+        "noHistory":  "No Hay Historial de Llamadas"
+    },
+    "SETTINGS": {
+        "telephony": "Direccion de Servidor",
+        "domain":    "Dominio",
+        "proxy":     "Servidor Proxy",
+        "stun":      "Servidor Stun",
+        "phone":     "Número de Telefono",
+        "password":  "Contraseña",
+        "language":  "Lenguaje",
+        "light":     "Modo Light",
+        "dark":      "Modo Dark",
+        "save":      "Guardar"
+    },
+
+    "PHONE": {
+        "toDial":             "DIGITE UN NUMERO",
+        "clickToAnswer":      "Haga click aqui para atender",
+        "clickToSee":         "Haga click aqui para ver",
+        "incomingCall":       "Llamada entrante de ",
+        "incomingVideo":      "Videollamada entrante de ",
+        "incomingMessage":    "Mensaje entrante de ",
+        "video-phone":        "Video",
+        "mute-phone":         "Silenciar",
+        "blind-phone":        "Trans. Ciega",
+        "hold-phone":         "Espera",
+        "keypad-phone":       "Teclado",
+        "attended-phone":     "Trans. Att",
+        "registered":         "REGISTRADO",
+        "connecting":         "CONECTANDO",
+        "connected":          "CONECTADO",
+        "disconnected":       "DESCONECTADO",
+        "unregistered":       "DESREGISTRADO",
+        "registrationFailed": "CREDENCIALES INCORRECTAS",
+        "starting":           "INICIANDO",
+        "peerconnection":     "PEERCONNECTION",
+        "hold":               "ESPERA",
+        "unhold":             "UNHOLD",
+        "mute":               "MUTE",
+        "unmute":             "UNMUTE",
+        "sending":            "ENVIANDO",
+        "accepted":           "ACEPTADA",
+        "ringing":            "RINGING",
+        "confirmed":          "CONFIRMED",
+        "failed":             "FAILED - ",
+        "ended":              "ENDED - "
+    }
+}
