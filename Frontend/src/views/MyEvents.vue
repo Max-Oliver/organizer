@@ -126,7 +126,7 @@ export default class MyEvents extends XComponent {
         {
           type: "input",
           name: "name",
-          label: "EVENT.name",
+          label: "nombre",
           hint: "EVENT.hintName",
           icon: "person",
           rules: this.rules.required,
@@ -144,7 +144,34 @@ export default class MyEvents extends XComponent {
         {
           type: "input",
           name: "date",
-          label: "EVENT.date",
+          label: "inicio",
+          hint: "EVENT.hintDate",
+          icon: "person",
+          rules: this.rules.required,
+          required: true
+        },
+        {
+          type: "input",
+          name: "date",
+          label: "fin",
+          hint: "EVENT.hintDate",
+          icon: "person",
+          rules: this.rules.required,
+          required: true
+        },
+        {
+          type: "input",
+          name: "date",
+          label: "descripcion",
+          hint: "EVENT.hintDate",
+          icon: "person",
+          rules: this.rules.required,
+          required: true
+        },
+        {
+          type: "input",
+          name: "date",
+          label: "cantidad de invitados",
           hint: "EVENT.hintDate",
           icon: "person",
           rules: this.rules.required,
