@@ -2,24 +2,27 @@ import Axios from 'axios';
 import Base from './Base';
 
 let axios = Axios.create({
-  baseURL: 'http://localhost:8092/api/users',
+  baseURL: 'http://localhost:8092/api/events',
   headers: {'content-type': 'application/json'}
 });
 
 export default class Provider extends Base { 
+    _idCost: number;
     name: string;
-    username: string;
-    password: string;
-    email: string;
-    phone: string;
-
+    location: string;
+    start: Date;
+    end: Date;
+    description: string;
+    capacity: number;
+    
     constructor(obj: any = {}) {
       super(obj);
       this.name = obj.name || "";
-      this.username = obj.username || "";
-      this.password = obj.password || "";
-      this.email = obj.email || "";
-      this.phone = obj.phone || "";
+      this.location = obj.location || "";
+      this.start = obj.start || null;
+      this.end = obj.start || null;
+      this.description = obj.description || "";
+      this.capacity = obj.capacity || 0;
     }
 
     static async get(pagination: any = {}, deleted: boolean) {

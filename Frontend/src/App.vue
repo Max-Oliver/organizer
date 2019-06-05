@@ -1,8 +1,9 @@
 <template>
   <v-app :dark="theme.dark">
     
-    <Toolbar></Toolbar>
-    <LeftSideMenu> </LeftSideMenu>
+    <Toolbar v-if="$store.state.userInfo"></Toolbar>
+    <LeftSideMenu></LeftSideMenu>
+    
     <main class="main-content">
       <router-view></router-view>
     </main>
@@ -29,15 +30,8 @@
     }
 
     init() {
-      let theme  : string | null = sessionStorage.getItem("themeLayout");
-      let layout : string | null = sessionStorage.getItem("languageLayout");
-
-      if (theme) {
-        this.$store.commit("setTheme", JSON.parse(theme).dark);
-      }
-
-      if (layout) {
-        this.$i18n.locale = layout;
+      if (!this.$store.state.userInfo) {
+        this.$router.push("/");
       }
     }
 

@@ -121,6 +121,7 @@ export default class MyEvents extends XComponent {
   private steps: any = [
     {
       title: "EVENT.basics",
+      Addbutton: {text:"Crear"},
       fields: [
         {
           type: "input",

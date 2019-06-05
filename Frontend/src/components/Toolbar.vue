@@ -47,10 +47,8 @@ export default class Toolbar extends Vue {
     profile:     false, 
     avatarMaker: false 
   }
-  private pass:          object   = { current: "", new: "", newRepeat: "" };
-  private preferences:   object[] = [{ name: "Layout" }, { name: "Seba" }, { name: "More Seba Stuff" }];
-  private notifications: object[] = [{ name: "New Webchat" }, { name: "Message From Seba" }, { name: "Last Notifications" }];
-  private msg:           string   = '';
+  private notifications: object[] = [];
+
   private colorGroups:   object[] = [
     { nav: '#fff',    navIcons: '#676767', menu: '#fff',    menuIcons: '#676767' },
     { nav: '#009688', navIcons: '#fff',    menu: '#fff',    menuIcons: '#676767' },

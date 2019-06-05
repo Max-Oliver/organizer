@@ -5,17 +5,14 @@
     <v-card class="x-dialogs">
       <v-card-text style="padding:0;">
           
-
         <v-stepper v-model="wizard" class="stepper" style="height:100%">
           <v-stepper-items>
             <v-stepper-content v-for="(step,index) in steps" :key="index+1" :step="index+1">
               
               <div class="black" style="position: relative; width: 100%; height: 50px;">
-                
                 <v-layout row wrap class="text-xs-center">
                   <v-flex xs4 xl4 sm4 class="text-xs-left pt-3 pl-1">
-                      <v-icon @click="value=false" dark fab>arrow_back</v-icon>
-                      
+                      <v-icon @click="model=false" dark fab>arrow_back</v-icon>
                   </v-flex>
                   <v-flex xs4 xl4 sm4 class="pt-3">
                       <span class="white--text">{{ $i18n.t(step.title) }}</span>
@@ -114,6 +111,7 @@ import { VSelect, VTextField, VCheckbox } from "vuetify/lib";
     VCheckbox
   }
 })
+
 export default class AddDialog extends Vue {
   @Prop({ default: false }) value!: boolean;
   @Prop({ default: {show:false, message:""} }) alert!: any;

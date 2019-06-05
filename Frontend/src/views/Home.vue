@@ -16,36 +16,20 @@
               </v-btn>
             </v-flex>
             <v-flex xs6 xl6 sm6 class="text-xs-left">
-              <v-btn class="button-access" small @click="dialogs.add = true">
+              <v-btn class="button-access" small @click="dialogs.register = true">
                 Registrarse
               </v-btn>
             </v-flex>
           </v-layout>
         </v-layout>
       </v-img>
-
-      <!-- <v-dialog v-model="dialogs.login" max-width="250px" scrollable>
-        <v-card style="border-radius: 5px;">
-          <v-layout row wrap>
-            <v-flex xs12 xl12 sm12 class="text-xs-center pt-3">
-              <span style="color:rgb(78, 78, 78)">Inicia sesion en Organize</span>
-              <div class="pl-4 pr-4">
-                  <v-text-field placeholder="Email"></v-text-field>
-                  <v-text-field placeholder="Contrase;a"></v-text-field>
-              </div>
-            </v-flex>
-            <v-flex xs12 xl12 sm12 class="text-xs-center pb-3">
-              <v-btn small>Acceder</v-btn>
-            </v-flex>
-          </v-layout>
-        </v-card>
-      </v-dialog> -->
      
-      <!--add dialog-->
-      <add-dialog :alert="alert" v-model="dialogs.add" :steps="steps" @add="add">
+      <!--login dialog-->
+      <add-dialog :alert="alert" v-model="dialogs.login" :steps="stepsLogin" @add="login">
       </add-dialog>
 
-      <add-dialog :alert="alert" v-model="dialogs.login" :steps="stepsLogin" @add="login">
+      <!--register dialog-->
+      <add-dialog :alert="alert" v-model="dialogs.register" :steps="stepsRegistration" @add="register">
       </add-dialog>
     </div>
   
@@ -95,32 +79,6 @@ export default class Home extends XComponent {
     phone: []
   };
 
-  // private tableConf = {
-  //   headers: [
-  //     {
-  //       name: "EVENT.name",
-  //       type: "string",
-  //       value: "name",
-  //       align: "left"
-  //     },
-  //     {
-  //       name: "EVENT.location",
-  //       type: "string",
-  //       value: "location",
-  //       align: "center"
-  //     },
-  //     {
-  //       name: "EVENT.date",
-  //       type: "string",
-  //       value: "date",
-  //       align: "center"
-  //     }
-  //   ],
-  //   search: {
-  //     show: false,
-  //     text: "EVENT.search"
-  //   }
-  // };
   private stepsLogin: any = [
     {
       title: "Acceder",
@@ -146,36 +104,12 @@ export default class Home extends XComponent {
         }
       ]
     }
-    // },
-    // {
-    //   title: "Opciones Avanzadas",
-    //   fields: [
-    //   {
-    //       type: "input",
-    //       name: "username",
-    //       label: "nombre de usuario",
-    //       hint: "USER.hintUsername",
-    //       icon: "person",
-    //       rules: this.rules.required,
-    //       required: true
-    //     },
-    //     {
-    //       type: "input",
-    //       name: "password",
-    //       label: "contrase;a",
-    //       hint: "USER.hintPassword",
-    //       icon: "person",
-    //       rules: this.rules.required,
-    //       required: true
-    //     }
-    //   ]
-    // }
   ];
 
-
-  private steps: any = [
+  private stepsRegistration: any = [
     {
       title: "Registrarse",
+      Addbutton: {text:"Registrarse"},
       fields: [
         {
           type: "input",
@@ -217,15 +151,6 @@ export default class Home extends XComponent {
     }
   ];
 
-  // private addOptions: any[] = [
-  //   { name: "Voice", user: "voice", icon: "phone" },
-  //   { name: "SMS", user: "sms", icon: "phone_iphone" },
-  //   { name: "Webchat", user: "webchat", icon: "chat" },
-  //   { name: "Whatsapp", user: "whatsapp", icon: "person" },
-  //   { name: "Facebook", user: "facebook", icon: "person" },
-  //   { name: "Twitter", user: "twitter", icon: "person" }
-  // ];
-
   created() {
     this.init();
   }
@@ -257,31 +182,32 @@ export default class Home extends XComponent {
    * @name ADD
    * @description add item
    */
-   async login(user: any) {
+  async register(user: any) {
     try {
       this.user = Object.assign(this.user, user);
-      await this.user.getUser();
+      await this.user.add();
       this.users.push(user);
-      this.dialogs.add = false;
+      this.dialogs.register = false;
     } catch (error) {
       this.alert = { show: true, message: error.data.message };
       //this.user = Object.assign(this.user, user);
     }
   }
 
-
-
-
   /**
    * @name ADD
    * @description add item
    */
-  async add(user: any) {
+   async login(user: any) {
     try {
       this.user = Object.assign(this.user, user);
-      await this.user.add();
-      this.users.push(user);
-      this.dialogs.add = false;
+      // await this.user.getUser();
+      // this.users.push(user);
+      this.$store.commit("setUserInfo", this.user.username); //JSON.stringify(this.user)
+      console.log("test")
+      console.log(this.$store.state.userInfo)
+      this.$router.push("/MyEvents");
+      this.dialogs.login = false;
     } catch (error) {
       this.alert = { show: true, message: error.data.message };
       //this.user = Object.assign(this.user, user);
