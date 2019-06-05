@@ -10,16 +10,20 @@ module.exports = {
    */
   async get(req: any, res: any) {
     let api = "GET /api/users - ";
-    let deleted: boolean = req.query.deleted;
+    //let deleted: boolean = req.query.deleted;
+    let username: string = req.query.username;
+    let password: string = req.query.password;
+
     Logger.header(api + "Request received");
     try {
-      let users = await new Promise((resolve, reject) => {
-        sql.query("select * from organize.user where deleted=?",deleted, (err:any, users:any) => {
+      let user:any = await new Promise((resolve, reject) => {
+        sql.query("select * from organize.user where username=? and password=?",[username, password], (err:any, users:any) => {
           if (!err) resolve(users);
           else reject(err);
         });
       });
-      res.status(200).send(users);
+      
+      res.status(200).send(user[0]);
       Logger.success(api + "Users found");
       Logger.success(api + "Returned 200");
     } catch (error) {

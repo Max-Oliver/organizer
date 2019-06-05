@@ -33,19 +33,19 @@ export default class User extends Base {
       }
     }
 
-    static async getUser(username: string, password: string) {
-      // try {
-      //   let response: any = await axios.get('?username='+ username+'?password='+password);
-      //   return {
-      //     docs: response.data,
-      //     total: response.data.length
-      //   }
-      // } catch (error) {
-      //   console.log('error en controller')
-      //   throw error.response;
-      // }
+    async getUser() {
+      try {
+        let response: any = await axios.get('', { params: this });
+        return response.data;
+      } catch (error) {
+        console.log('error en controller')
+        throw error.response;
+      }
     }
-  
+    // return {
+    //   docs: response.data,
+    //   total: response.data.length
+    // }
     async add() {
       try {
         console.log(this)

@@ -201,11 +201,14 @@ export default class Home extends XComponent {
    async login(user: any) {
     try {
       this.user = Object.assign(this.user, user);
-      // await this.user.getUser();
+      let getUser = await this.user.getUser();
+      this.user = Object.assign(this.user, getUser);
+
+      //console.log(getUser)
       // this.users.push(user);
       this.$store.commit("setUserInfo", this.user.username); //JSON.stringify(this.user)
-      console.log("test")
-      console.log(this.$store.state.userInfo)
+      // console.log("test")
+      // console.log(this.$store.state.userInfo)
       this.$router.push("/MyEvents");
       this.dialogs.login = false;
     } catch (error) {

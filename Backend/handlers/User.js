@@ -49,18 +49,19 @@ module.exports = {
      */
     get: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var api, deleted, users, error_1;
+            var api, username, password, user, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         api = "GET /api/users - ";
-                        deleted = req.query.deleted;
+                        username = req.query.username;
+                        password = req.query.password;
                         Logger_1.default.header(api + "Request received");
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
                         return [4 /*yield*/, new Promise(function (resolve, reject) {
-                                sql.query("select * from organize.user where deleted=?", deleted, function (err, users) {
+                                sql.query("select * from organize.user where username=? and password=?", [username, password], function (err, users) {
                                     if (!err)
                                         resolve(users);
                                     else
@@ -68,8 +69,8 @@ module.exports = {
                                 });
                             })];
                     case 2:
-                        users = _a.sent();
-                        res.status(200).send(users);
+                        user = _a.sent();
+                        res.status(200).send(user[0]);
                         Logger_1.default.success(api + "Users found");
                         Logger_1.default.success(api + "Returned 200");
                         return [3 /*break*/, 4];
