@@ -122,8 +122,7 @@
         </div>
       </div>
       
-      
-
+    
       <v-alert
         style="margin: 27px;"
         v-show="!filtered.length && search"
@@ -135,9 +134,10 @@
         style="margin: 27px;"
         v-show="!filtered.length && !search"
         :value="true"
+        outline
         color="red"
-        icon="new_releases"
-      >{{ $i18n.t('UCONTACTX_TABLE.noData') }}</v-alert>
+        icon="warning"
+      >No tienes eventos creados</v-alert>
     </div>
 
     <v-card

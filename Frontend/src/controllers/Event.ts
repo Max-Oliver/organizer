@@ -6,7 +6,7 @@ let axios = Axios.create({
   headers: {'content-type': 'application/json'}
 });
 
-export default class Provider extends Base { 
+export default class Event extends Base { 
     _idCost: number;
     name: string;
     location: string;

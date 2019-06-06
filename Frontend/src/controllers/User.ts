@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import Base from './Base';
+import { userInfo } from 'os';
 
 let axios = Axios.create({
   baseURL: 'http://localhost:8092/api/users',
@@ -34,13 +35,15 @@ export default class User extends Base {
     }
 
     async getUser() {
-      try {
-        let response: any = await axios.get('', { params: this });
-        return response.data;
-      } catch (error) {
-        console.log('error en controller')
-        throw error.response;
-      }
+      let user: any = { username: "damian", password: "1234" };
+      return user;
+      // try {
+      //   let response: any = await axios.get('', { params: this });
+      //   return response.data;
+      // } catch (error) {
+      //   console.log('error en controller')
+      //   throw error.response;
+      // }
     }
     // return {
     //   docs: response.data,

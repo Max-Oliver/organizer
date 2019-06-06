@@ -5,7 +5,7 @@
     <v-card class="x-dialogs">
       <v-card-text style="padding:0;">
           
-        <v-stepper v-model="wizard" class="stepper" style="height:100%">
+        <v-stepper v-model="wizard" class="stepper">
           <v-stepper-items>
             <v-stepper-content v-for="(step,index) in steps" :key="index+1" :step="index+1">
               
@@ -40,9 +40,9 @@
                       lg12
                       class="pb-3 px-4"
                     >
-                      <component
+                      <component v-if="!field.type == 'date'"
                         v-model="item[field.name]"
-                        :is="getFieldType(field.type)"
+                        :is="getFieldType(field.type)"      
                         :items="(field.data || {}).items"
                         :item-text="(field.data || {}).text"
                         :item-value="(field.data || {}).value"
@@ -54,13 +54,32 @@
                         :selectable="field.selectable"
                         color="x-theme__color"
                       ></component>
+                      
+<!-- 
+                      <template v-else v-slot:activator="{ on }">
+                        <v-text-field
+                          v-model="item[field.name]"
+                          label="Picker in menu"
+                          prepend-icon="event"
+                          readonly
+                          v-on="on"
+                        ></v-text-field>
+                      </template>
+                      <v-date-picker v-model="item[field.name]" no-title scrollable>
+                        <v-spacer></v-spacer>
+                        <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
+                        <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+                      </v-date-picker> -->
+
+
                     </v-flex>
 
                     <!--footer-->
-                    <v-flex xs12 sm12 lg12>
+                    <v-flex xs12 sm12 lg12 class="pr-3">
                       <v-btn
                         v-if="steps.length == index+1"
                         color="x-theme__color"
+                        flat
                         outline
                         style="float: right;"
                         @click.native="add"
@@ -90,11 +109,10 @@
 
       <div style="position:absolute; bottom:0; width:100%">
         <v-alert
-        class="alert"
-        v-model="alert.show"
-        
-        outline
-        color="error"
+          class="alert"
+          v-model="alert.show"
+          outline
+          color="error"
         >
           {{ alert.message }}
         </v-alert>
@@ -107,10 +125,14 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { VSelect, VTextField, VCheckbox } from "vuetify/lib";
+import { VSelect, VTextField, VCheckbox, VDatePicker } from "vuetify/lib";
+// import DatePick from 'vue-date-pick';
+// import 'vue-date-pick/dist/vueDatePick.css';
+
 
 @Component({
   components: {
+    VDatePicker,
     VSelect,
     VTextField,
     VCheckbox
@@ -150,6 +172,16 @@ export default class AddDialog extends Vue {
   private wizard: number = 1;
   private errors: boolean = false;
   private item: any = {};
+
+  private weekdays: any = [
+    'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'
+  ];
+  private months: any = [
+    'Enero', 'Febrero', 'Marzo', 'Abril',
+    'Mayo', 'Junio', 'Julio', 'Agosto',
+    'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+  private timeCaption: string = "[hola]";
 
   /**
    * @name MODEL
@@ -199,6 +231,8 @@ export default class AddDialog extends Vue {
     if (type == "select") component = "v-select";
     if (type == "list") component = "x-list";
     if (type == "checkbox") component = "v-checkbox";
+    if (type == "date") component = "v-date-picker";
+    
     return component;
   }
 
@@ -246,7 +280,9 @@ export default class AddDialog extends Vue {
 <style lang="scss">
 
 .stepper {
+
   .v-stepper__content {
+    
     padding: 0 !important;
   }
 }
@@ -286,9 +322,13 @@ export default class AddDialog extends Vue {
 }
 
 .x-dialogs__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+  // max-height: 520px;
+  // overflow-y: auto;
   padding-top: 50px;
-  max-height: 520px;
-  overflow-y: auto;
   padding-left: 45px;
   padding-right: 45px;
 }

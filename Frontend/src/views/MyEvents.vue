@@ -120,7 +120,7 @@ export default class MyEvents extends XComponent {
 
   private steps: any = [
     {
-      title: "EVENT.basics",
+      title: "Datos basicos",
       Addbutton: {text:"Crear"},
       fields: [
         {
@@ -143,40 +143,46 @@ export default class MyEvents extends XComponent {
         },
         {
           type: "input",
-          name: "date",
-          label: "inicio",
-          hint: "EVENT.hintDate",
-          icon: "person",
-          rules: this.rules.required,
-          required: true
-        },
-        {
-          type: "input",
-          name: "date",
-          label: "fin",
-          hint: "EVENT.hintDate",
-          icon: "person",
-          rules: this.rules.required,
-          required: true
-        },
-        {
-          type: "input",
-          name: "date",
-          label: "descripcion",
-          hint: "EVENT.hintDate",
-          icon: "person",
-          rules: this.rules.required,
-          required: true
-        },
-        {
-          type: "input",
-          name: "date",
+          name: "capacity",
           label: "cantidad de invitados",
           hint: "EVENT.hintDate",
           icon: "person",
           rules: this.rules.required,
           required: true
+        },
+        {
+          type: "input",
+          name: "description",
+          label: "descripcion",
+          hint: "EVENT.hintDate",
+          icon: "person",
+          rules: this.rules.required,
+          required: true
         }
+      ]
+    },
+    {
+      title: "Fecha de inicio y fin",
+      Addbutton: {text:"Crear"},
+      fields: [
+        {
+          type: "date",
+          name: "date",
+          label: "inicio",
+          hint: "EVENT.hintDate",
+          icon: "calendar",
+          rules: this.rules.required,
+          required: true
+        },
+        {
+          type: "date",
+          name: "date",
+          label: "fin",
+          hint: "EVENT.hintDate",
+          icon: "calendar",
+          rules: this.rules.required,
+          required: true
+        },
       ]
     }
   ];
@@ -223,7 +229,8 @@ export default class MyEvents extends XComponent {
    */
   async add(event: any) {
     try {
-      await this.event.add();
+      this.event = Object.assign(this.event, event);
+      //await this.event.add();
       this.events.push(event);
       this.dialogs.add = false;
     } catch (error) {

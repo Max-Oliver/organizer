@@ -31,6 +31,92 @@
       <!--register dialog-->
       <add-dialog :alert="alert" v-model="dialogs.register" :steps="stepsRegistration" @add="register">
       </add-dialog>
+
+
+      <!-- <v-dialog
+        ref="dialog"
+        v-model="modal"
+        :return-value.sync="date"
+        persistent
+        lazy
+        full-width
+        width="290px"
+      >
+        <template v-slot:activator="{ on }">
+          <v-text-field
+            v-model="date"
+            label="Picker in dialog"
+            prepend-icon="event"
+            readonly
+            v-on="on"
+          ></v-text-field>
+        </template>
+        
+        <v-date-picker v-model="date" scrollable>
+          <v-spacer></v-spacer>
+          <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
+          <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+        </v-date-picker>
+      </v-dialog>
+   
+      <v-menu
+        v-model="menu2"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on }">
+          <v-text-field
+            v-model="date"
+            label="Picker without buttons"
+            prepend-icon="event"
+            readonly
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
+      </v-menu>
+
+
+  <v-dialog
+        ref="dialog"
+        v-model="modal2"
+        :return-value.sync="time"
+        persistent
+        lazy
+        full-width
+        width="290px"
+      >
+        <template v-slot:activator="{ on }">
+          <v-text-field
+            v-model="time"
+            label="Picker in dialog"
+            prepend-icon="access_time"
+            readonly
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-time-picker
+          v-if="modal2"
+          v-model="time"
+          full-width
+        >
+          <v-spacer></v-spacer>
+          <v-btn flat color="primary" @click="modal2 = false">Cancel</v-btn>
+          <v-btn flat color="primary" @click="$refs.dialog.save(time)">OK</v-btn>
+        </v-time-picker>
+      </v-dialog>
+ -->
+
+
+
+
+
+
     </div>
   
   </transition>
@@ -87,7 +173,7 @@ export default class Home extends XComponent {
       {
           type: "input",
           name: "username",
-          label: "nombre de usuario",
+          label:"nombre de usuario",
           hint: "USER.hintUsername",
           icon: "person",
           rules: this.rules.required,
@@ -96,9 +182,9 @@ export default class Home extends XComponent {
         {
           type: "input",
           name: "password",
-          label: "contrase;a",
+          label:"contrase;a",
           hint: "USER.hintPassword",
-          icon: "person",
+          icon: "vpn_key",
           rules: this.rules.required,
           required: true
         }
@@ -122,15 +208,6 @@ export default class Home extends XComponent {
         },
         {
           type: "input",
-          name: "email",
-          label: "email",
-          hint: "USER.hintemail",
-          icon: "person",
-          rules: this.rules.required,
-          required: true
-        },
-        {
-          type: "input",
           name: "username",
           label: "nombre de usuario",
           hint: "USER.hintUsername",
@@ -140,10 +217,43 @@ export default class Home extends XComponent {
         },
         {
           type: "input",
+          name: "picture",
+          label: "imagen de perfil",
+          hint: "USER.hintPicture",
+          icon: "account_circle",
+          rules: this.rules.required,
+          required: true
+        }
+      ]
+    },
+    {
+      title: "Registrarse",
+      Addbutton: {text:"Registrarse"},
+      fields: [
+        {
+          type: "input",
+          name: "email",
+          label: "email",
+          hint: "USER.hintemail",
+          icon: "email",
+          rules: this.rules.required,
+          required: true
+        },
+        {
+          type: "input",
           name: "password",
           label: "contrase;a",
           hint: "USER.hintPassword",
-          icon: "person",
+          icon: "vpn_key",
+          rules: this.rules.required,
+          required: true
+        },
+        {
+          type: "input",
+          name: "password",
+          label: "repita contrase;a",
+          hint: "USER.hintPassword",
+          icon: "vpn_key",
           rules: this.rules.required,
           required: true
         }
