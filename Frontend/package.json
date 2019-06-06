@@ -12,6 +12,7 @@
     "axios": "^0.18.0",
     "vue": "^2.6.6",
     "vue-class-component": "^6.0.0",
+    "vue-date-pick": "^1.1.0",
     "vue-i18n": "^8.9.0",
     "vue-property-decorator": "^8.0.0",
     "vue-router": "^3.0.1",
