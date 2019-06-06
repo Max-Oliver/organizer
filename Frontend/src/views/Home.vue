@@ -24,8 +24,8 @@
         </v-layout>
       </v-img>
      
-      <!--login dialog-->
-      <add-dialog :alert="alert" v-model="dialogs.login" :steps="stepsLogin" @add="login">
+      <!--login dialog :alert="alert"-->
+      <add-dialog v-model="dialogs.login" :steps="stepsLogin" @add="login">
       </add-dialog>
 
       <!--register dialog-->

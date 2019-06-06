@@ -87,14 +87,19 @@
           </v-stepper-items>
         </v-stepper>
       </v-card-text>
-      
-      <v-alert
+
+      <div style="position:absolute; bottom:0; width:100%">
+        <v-alert
+        class="alert"
         v-model="alert.show"
-        dismissible
-        type="warning"
-      >
-        {{ alert.message }}
-      </v-alert>
+        
+        outline
+        color="error"
+        >
+          {{ alert.message }}
+        </v-alert>
+      </div>
+
     </v-card>
   </v-dialog>
     </transition>
@@ -209,7 +214,7 @@ export default class AddDialog extends Vue {
     return error;
   }
 
-  /**
+  /**s
    * @name ADD
    * @description emits the add method to the parent
    */
@@ -239,6 +244,7 @@ export default class AddDialog extends Vue {
 </script>
 
 <style lang="scss">
+
 .stepper {
   .v-stepper__content {
     padding: 0 !important;
@@ -283,7 +289,7 @@ export default class AddDialog extends Vue {
   padding-top: 50px;
   max-height: 520px;
   overflow-y: auto;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 45px;
+  padding-right: 45px;
 }
 </style>
