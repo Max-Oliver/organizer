@@ -27,7 +27,7 @@ export default class Event extends Base {
 
     static async get(pagination: any = {}, deleted: boolean) {
       try {
-        let response: any = await axios.get('?deleted='+ deleted);
+        let response: any = await axios.get('', {params:{"deleted":deleted}});
         return {
           docs: response.data,
           total: response.data.length
