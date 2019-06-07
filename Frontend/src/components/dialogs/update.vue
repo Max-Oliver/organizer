@@ -1,79 +1,104 @@
 <template>
-  <v-dialog v-model="model" transition="dialog-bottom-transition" persistent :max-width="(stepWidth * steps.length + 5)+'px'">
-    <v-card>
-      <v-card-actions style="padding:0;">
-        <div v-for="(step,index) in steps" :key="index" :style="{'width' : stepWidth+'px'}">
-          <div class="step-header" :class="{'step-header__right': (index == steps.length-1)}">
-            <v-subheader>
-              <span class="grey--text">{{ $i18n.t(step.title) }}</span>
-            </v-subheader>
-          </div>
-        </div>
-      </v-card-actions>
+  <transition name="slide-y">
+    <v-dialog v-model="model" fullscreen scrollable>
+      <v-card class="x-dialogs">
+        
+        <v-card-text style="padding:0">
+          <!--headers-->
+          <v-card-actions style="padding:0;">
+            <div
+              v-for="(step,index) in steps"
+              :key="index"
+              :style="{'width' : (width / steps.length)+'px'}"
+            >
+              <!--header-->
+              <slot :name="'header'+(index+1)">
+                <div
+                  class="step-header pb-3"
+                  :class="{'step-header__right': (index == steps.length-1)}"
+                >
+                  <v-subheader class="pl-5">
+                    <span class="pt-5 grey--text">{{ $i18n.t(step.title) }}</span>
+                  </v-subheader>
+                </div>
+              </slot>
+            </div>
+          </v-card-actions>
 
-      <v-card-text style="padding:0">
-        <v-card-actions style="padding:0">
-          <div
-            :style="{'width' : stepWidth+'px'}"
-            class="step px-5"
-            :class="{ 'step__align-center' : step.fields.length <= 6,'step__right': (index == steps.length-1) }"
-            v-for="(step,index) in steps"
-            :key="index"
-          >
-            <v-layout row wrap>
-              <!-- ITEMS -->
-              <v-flex xs12 sm12 lg12 class="pb-3" v-for="(field,index) in step.fields" :key="index">
-                <component
-                  v-if="field.type == 'input'"
-                  :is="getFieldType(field.type)"
-                  color="sistra-theme__color"
-                  :error="errors && errorField(field)"
-                  v-model="item[field.name]"
-                  :label="$i18n.t(field.label)"
-                  :prepend-icon="field.icon"
-                ></component>
+          <v-layout row wrap>
+            <v-flex xs12 sm12 xl12 v-for="(step,index) in steps" :key="index">
+              <!--form validation-->
+              <v-form :ref="'step'+(index+1)">
+                <!--default step-->
+                <slot :name="'step'+(index+1)">
+                  <!--fields-->
+                  <div
+                    :style="{'width' : (width / steps.length)+'px'}"
+                    class="step px-5"
+                    :class="{ 'step__align-center' : step.fields.length <= 5,'step__right': (index == steps.length-1) }"
+                  >
+                    <v-layout row wrap>
+                      <v-flex
+                        xs12
+                        sm12
+                        lg12
+                        class="pb-3"
+                        v-for="(field,index) in step.fields"
+                        :key="index"
+                      >
+                        <component
+                          color="sistra-theme__color"
+                          :is="getFieldType(field.type)"
+                          :items="(field.data || {}).items"
+                          :item-text="(field.data || {}).text"
+                          :type="field.inputType || 'text'"
+                          :error="errors && errorField(field)"
+                          :hint="$i18n.t(field.hint)"
+                          v-model="item[field.name]"
+                          item-value="id"
+                          :label="$i18n.t(field.label)"
+                          :prepend-icon="field.icon"
+                        ></component>
+                      </v-flex>
+                    </v-layout>
+                  </div>
+                </slot>
+              </v-form>
+            </v-flex>
+          </v-layout>
+            
+          
+        </v-card-text>
 
-                <component
-                  v-else-if="field.type == 'select'"
-                  color="sistra-theme__color"
-                  :is="getFieldType(field.type)"
-                  :items="field.data.items"
-                  :item-text="field.data.text"
-                  :error="errors && errorField(field)"
-                  v-model="item[field.name]"
-                  :item-value="field.data.value"
-                  :label="$i18n.t(field.label)"
-                  :prepend-icon="field.icon"
-                ></component>
-              </v-flex>
-            </v-layout>
-          </div>
-        </v-card-actions>
-      </v-card-text>
-
-      <!--FOOTER-->
-      <v-card class="x-theme__footer">
-        <v-btn flat @click.native="model = false">Cerrar</v-btn>
-        <v-btn dark color="sistra-theme__background" @click.native="save">Guardar</v-btn>
+        <!--FOOTER-->
+        <slot name="footer" :save="save">
+          <v-layout row wrap class="x-theme__footer text-xs-center">
+            <v-flex xs12 xl12 sm12 class="pt-2 pb-2">
+              <v-btn flat @click.native="model = false">Cerrar</v-btn>
+              <v-btn dark color="sistra-theme__background" @click.native="save">Guardar</v-btn>
+            </v-flex>
+          </v-layout>
+        </slot>
       </v-card>
-    </v-card>
-  </v-dialog>
+    </v-dialog>
+  </transition>
 </template>
-
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { VSelect, VTextField } from "vuetify/lib";
+import { VSelect, VTextField, VCheckbox } from "vuetify/lib";
 
 @Component({
   components: {
     VSelect,
-    VTextField
+    VTextField,
+    VCheckbox
   }
 })
 export default class UpdateDialog extends Vue {
+  @Prop({ default: {} }) item!: any;
   @Prop({ default: false }) value!: boolean;
-  @Prop({ default: 350 }) stepWidth!: number;
+  @Prop({ default: 800 }) width!: number;
   @Prop({
     default: () => [
       {
@@ -100,9 +125,12 @@ export default class UpdateDialog extends Vue {
   })
   steps!: any[];
 
-  private item: any = {};
   private errors: boolean = false;
 
+  /**
+   * @name MODEL
+   * @description emits the input method to the parent for define visibility of the dialog
+   */
   get model(): boolean {
     return this.value;
   }
@@ -111,13 +139,22 @@ export default class UpdateDialog extends Vue {
     this.$emit("input", model);
   }
 
+  /**
+   * @name GET_FIELD_TYPE
+   * @description return a type of component by a type string
+   */
   getFieldType(type: string): string {
     let component: string = "";
     if (type == "input") component = "v-text-field";
     if (type == "select") component = "v-select";
+    if (type == "checkbox") component = "v-checkbox";
     return component;
   }
 
+  /**
+   * @name ERROR_FIELD
+   * @description Check the required fields and return if there is an empty one
+   */
   errorField(field: any) {
     let error = false;
 
@@ -127,14 +164,18 @@ export default class UpdateDialog extends Vue {
     return error;
   }
 
+  /**
+   * @name SAVE
+   * @description emits the save method to the parent
+   */
   save() {
+    console.log("save-update");
     this.errors = false;
     this.steps.map((step: any, index: number) => {
-      step.fields.map((field: any) => {
-        if (this.errorField(field)) {
-          this.errors = true;
-        }
-      });
+      let form = "step" + (index + 1);
+      if (!this.$refs[form][0].validate()) {
+        this.errors = true;
+      }
     });
 
     if (!this.errors) this.$emit("save", this.item);
@@ -145,13 +186,15 @@ export default class UpdateDialog extends Vue {
 <style>
 .step {
   border-right: 1px solid #0000001f !important;
-  height: 500px;
+  height: 530px;
   overflow-y: auto;
+  padding-top: 40px !important;
 }
 
 .step__align-center {
   align-items: center;
   display: flex;
+  padding-top: 0px !important;
 }
 
 .step__right {
@@ -159,6 +202,7 @@ export default class UpdateDialog extends Vue {
 }
 
 .step-header {
+  height: 70px;
   border-right: 1px solid #0000001f;
 }
 .step-header__right {
@@ -167,5 +211,9 @@ export default class UpdateDialog extends Vue {
 
 .x-theme__footer {
   border-top: 1px solid #0000001f !important;
+}
+
+.x-dialogs {
+  border-radius: 6px !important;
 }
 </style>

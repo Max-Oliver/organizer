@@ -17,10 +17,8 @@
       </v-layout>
 
       <!--add dialog-->
-      <add-dialog v-model="dialogs.add" :steps="steps" @add="add"></add-dialog>
-
-      <!--update dialog-->
-      <update-dialog width="800" v-model="dialogs.save" :steps="steps" @save="save"></update-dialog>
+      <custom-dialog v-model="dialogs.add" :steps="steps" @event="add"></custom-dialog>
+      <custom-dialog v-model="dialogs.save" :steps="steps" :item="event" @event="save"></custom-dialog>
 
       <!--delete dialog-->
       <delete-dialog
@@ -48,14 +46,14 @@ import { Component } from "vue-property-decorator";
 import XComponent from "@/components/XComponent.ts";
 import Event from "@/controllers/Event.ts";
 import XTable from "@/components/XTable.vue";
-import AddDialog from "@/components/dialogs/add.vue";
+import CustomDialog from "@/components/dialogs/add.vue";
 import UpdateDialog from "@/components/dialogs/update.vue";
 import DeleteDialog from "@/components/dialogs/delete.vue";
 
 @Component({
   components: {
     XTable,
-    AddDialog,
+    CustomDialog,
     UpdateDialog,
     DeleteDialog
   }

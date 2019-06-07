@@ -1,7 +1,6 @@
 <template>
-    <transition name="slide-y">
-  <v-dialog v-model="model" fullscreen scrollable>
-      
+  <transition name="slide-y">
+  <v-dialog v-model="model" fullscreen scrollable>    
     <v-card class="x-dialogs">
       <v-card-text style="padding:0;">
           
@@ -18,8 +17,8 @@
                       <span class="white--text">{{ $i18n.t(step.title) }}</span>
                   </v-flex>
                   <v-flex xs4 xl4 sm4>        
-                                      </v-flex>
-                </v-layout>
+                  </v-flex>
+              </v-layout>
               </div>
               
               <v-form :ref="'step'+(index+1)">
@@ -82,7 +81,7 @@
                         flat
                         outline
                         style="float: right;"
-                        @click.native="add"
+                        @click.native="event"
                       >{{ step.Addbutton.text }}</v-btn>
                       <v-btn
                         v-if="wizard != steps.length"
@@ -139,7 +138,8 @@ import { VSelect, VTextField, VCheckbox, VDatePicker } from "vuetify/lib";
   }
 })
 
-export default class AddDialog extends Vue {
+export default class CustomDialog extends Vue {
+  @Prop({ default: {} }) item!: any;
   @Prop({ default: false }) value!: boolean;
   @Prop({ default: {show:false, message:""} }) alert!: any;
 
@@ -171,7 +171,7 @@ export default class AddDialog extends Vue {
 
   private wizard: number = 1;
   private errors: boolean = false;
-  private item: any = {};
+  // private item: any = {};
 
   private weekdays: any = [
     'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'
@@ -249,10 +249,10 @@ export default class AddDialog extends Vue {
   }
 
   /**s
-   * @name ADD
-   * @description emits the add method to the parent
+   * @name EVENT
+   * @description emits the "event" method to the parent
    */
-  add() {
+  event() {
       this.errors = false;
       this.steps.map((step: any, index: number) => {
         let form = "step" + (index + 1);
@@ -263,7 +263,7 @@ export default class AddDialog extends Vue {
         }
       });
       if (!this.errors){
-        this.$emit("add", this.item);
+        this.$emit("event", this.item);
         // //refresh
         // this.steps.map((step: any, index: number) => {
         //   let form = "step" + (index + 1);
