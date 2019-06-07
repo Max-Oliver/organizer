@@ -9,7 +9,7 @@
           <v-stepper-items>
             <v-stepper-content v-for="(step,index) in steps" :key="index+1" :step="index+1">
               
-              <div class="black" style="position: relative; width: 100%; height: 50px;">
+              <div class="black" style="position: relative; width: 100%; height: 60px;">
                 <v-layout row wrap class="text-xs-center">
                   <v-flex xs4 xl4 sm4 class="text-xs-left pt-3 pl-1">
                       <v-icon @click="model=false" dark fab>arrow_back</v-icon>
@@ -40,7 +40,7 @@
                       lg12
                       class="pb-3 px-4"
                     >
-                      <component v-if="!field.type == 'date'"
+                      <component
                         v-model="item[field.name]"
                         :is="getFieldType(field.type)"      
                         :items="(field.data || {}).items"
@@ -231,7 +231,7 @@ export default class AddDialog extends Vue {
     if (type == "select") component = "v-select";
     if (type == "list") component = "x-list";
     if (type == "checkbox") component = "v-checkbox";
-    if (type == "date") component = "v-date-picker";
+    if (type == "date") component = "v-text-field";//"v-date-picker";
     
     return component;
   }

@@ -69,6 +69,7 @@ export default class MyEvents extends XComponent {
   private transports: string[] = ["udp", "tcp", "tls"];
   private ports: string[] = ["5060", "4569"];
   private snackbar: any = { state: false, timeout: 0 };
+  private typeSurvey: string[] = ["asado", "tennis"];
 
   private pagination: any = {
     page: 1,
@@ -137,7 +138,7 @@ export default class MyEvents extends XComponent {
           name: "location",
           label: "EVENT.location",
           hint: "EVENT.hintLocation",
-          icon: "person",
+          icon: "my_location",
           rules: this.rules.required,
           required: true
         },
@@ -146,7 +147,7 @@ export default class MyEvents extends XComponent {
           name: "capacity",
           label: "cantidad de invitados",
           hint: "EVENT.hintDate",
-          icon: "person",
+          icon: "people",
           rules: this.rules.required,
           required: true
         },
@@ -155,7 +156,7 @@ export default class MyEvents extends XComponent {
           name: "description",
           label: "descripcion",
           hint: "EVENT.hintDate",
-          icon: "person",
+          icon: "description",
           rules: this.rules.required,
           required: true
         }
@@ -170,7 +171,7 @@ export default class MyEvents extends XComponent {
           name: "date",
           label: "inicio",
           hint: "EVENT.hintDate",
-          icon: "calendar",
+          icon: "event",
           rules: this.rules.required,
           required: true
         },
@@ -179,10 +180,46 @@ export default class MyEvents extends XComponent {
           name: "date",
           label: "fin",
           hint: "EVENT.hintDate",
-          icon: "calendar",
+          icon: "event",
           rules: this.rules.required,
           required: true
         },
+      ]
+    },
+    {
+      title: "Creacion de Encuesta",
+      Addbutton: {text:"Crear"},
+      fields: [
+        {
+          type: "input",
+          name: "name",
+          label: "nombre",
+          hint: "EVENT.hintName",
+          icon: "person",
+          rules: this.rules.required,
+          required: true
+        },
+        {
+          type: "select",
+          name: "type",
+          label: "tipo de encuesta",
+          hint: "EVENT.hintName",
+          icon: "person",
+          rules: this.rules.required,
+          data: {
+            items: this.typeSurvey
+          },
+          required: true
+        },
+        {
+          type: "date",
+          name: "limitTime",
+          label: "fecha limite",
+          hint: "EVENT.hintDate",
+          icon: "event",
+          rules: this.rules.required,
+          required: true
+        }
       ]
     }
   ];
